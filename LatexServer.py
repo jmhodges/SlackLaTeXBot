@@ -20,7 +20,7 @@ DEFAULT_PORT_NUMBER = 8642
 
 ERROR_IMAGE = 'error.png'
 
-QUICKLATEX_URL = 'http://quicklatex.com/latex3.f'
+QUICKLATEX_URL = 'https://quicklatex.com/latex3.f'
 
 # Used for temp file names
 CHARSET = string.ascii_lowercase + string.digits
@@ -106,8 +106,8 @@ class LatexHandler(BaseHTTPRequestHandler):
     response['attachments'] = [{
       'title': "LaTeX Image (powered by <http://quicklatex.com/|QuickLaTeX>)",
       'fallback': "Could not render equation",
-      'image_url':  "http://%s:%s/%s" % (
-        self.hostname, self.port, urllib.quote(latex_string)),
+      'image_url':  "%s/%s" % (
+        self.hostname, urllib.quote(latex_string)),
     }]
 
     self.send_response(200)
